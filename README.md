@@ -7,13 +7,14 @@ To run tests, you can run the command:
 ```zsh
 cargo test
 ```
-Note: this subcommand has a lot of possible arguments that you can use to change the setup of your test, see official documentation for more information.
+This subcommand has a lot of possible arguments that you can use to change the setup of your test, see official documentation for more information
+[cargo test](https://doc.rust-lang.org/cargo/commands/cargo-test.html).
 
 Here's a [guide](https://github.com/utkarshg6/helpful/blob/master/Rust.md#rust-tests) that can be used as a reference for writing tests in Rust.
 
 ## A Step by Step guide of the Test Driven Development:
 
-Step 1: **Don't** write any code you plan to write, write tests first. Elaboration: It's okay to frame out production data
+Step 1: **Don't** write any source code, write tests first. Elaboration: It's okay to frame out production data
 structures and code patterns without tests; but they should contain no valid behavioral code. Use macros
 like `unimplemented!()` or `todo!()` (the latter is prefered, [see this](#unimplemented-vs-todo)) to hold places for code that doesn't exist yet.
 
@@ -41,8 +42,7 @@ Note: Any code that doesn't drive new code is an overhead and it causes the cost
 Refer [here](https://github.com/utkarshg6/rust-tests/commit/c8219592c26fc2fcc32b805e3670bd0666c2e235#diff-b1a35a68f14e696205874893c07fd24fdb88882b47c23cc0e0c80a30c7d53759R33) for more explanation.
 
 ### `unimplemented!()` vs `todo!()`
-At least for us working in IntelliJ todo!() has the nice side of not shadowing the code placed after it unlike unimplemented!() which does. It causes
-that you cannot use the maximal potential of the tools provided with the Rust plugin or whatever what is supposed to make your work easier.  
+At least for us working in IntelliJ, `todo!()` has the nice part of not shadowing and deactivating the piece of code taking place after it unlike with `unimplemented!()` which does. That causes that you cannot get the maximum potential out of the tools provided with the editor's Rust plugin which is there to make your work easier, though.  
 
 ## Test Coverage
 
@@ -63,11 +63,15 @@ Note: False Negatives (or Type 2 Errors) are considered to be far riskier than F
 
 #### Relation with Test Coverage
 
-- Using Test Coverage as the main metric increases the chances of False Negatives (riskier Type 2 Errors).
-- When the Test Coverage increases we start to believe that more lines covered means also fewer bugs, which keeps us far away from the truth as we deprioritized the logic testing over code coverage.
-- Thus, as we incline to believe that more lines covered means fewer bugs it makes us more prone to False Negatives.
-- The only benefit that Test Coverage serves is, for example, we have 20% code coverage, it can guide us to the awareness that we haven't written enough tests, definitelly not enough to cover all our code, but if we have 80% Test Coverage that does not necessarily mean that we've managed to deploy tests that would've rigorously asserted on exact results that we expect at certain places in our code, it only means that the so much code was run during the tests, nothing about the quality of produced results. The results we want should be expected based on the initial conditions we set up for each test. If we are able to test against these wisely chosen values and we also get them eventually right, with existence of proper tested functionality behind that, we become confident about having a stronger coverage than we would've had just with a normal Test Coverage tool of any choice.  
-- Thus, we should always use Test-Driven Development.
+* Using Test Coverage as the main metric increases the chances of False Negatives (riskier Type 2 Errors).
+* When the Test Coverage increases we start to believe that more lines covered means also fewer bugs, which keeps us far away from the truth as we deprioritized the logic testing over code coverage.
+* Thus, as we incline to believe that more lines covered means fewer bugs it makes us more prone to False Negatives.
+* Test quality is more than quantity
+  * Given e.g. 20% code coverage,the only benefit Test Coverage serves is that it can guide us to an awareness that we've definitely written too few tests. Obviously not enough to cover our code, because about 80% is left. But if we have 80% Test Coverage that does not necessarily mean that we've created reliable tests proving considerably valuable or useful things.
+  * It's possible that our tests are pointless; they don't provide exact assertions on results we would've expected at certain places in our code. The percentage only means how much code was run during the process, nothing about the quality of the produced results. Nothing about the fact whether we tested what's going on in important parts of the code and whether it fits to the expected things and thus the initial assignment.
+  * Ironically, the tests might not have any assertions in them at all and still they may run nicely and take a portion in an increase of the total Test Coverage. 
+  * The results we want to see should be expected in response to the initial test conditions we set up for each test. If we can find these assertable (understand timely immutable, constant or if not, then computable) values and we also get them eventually right as our test results, both sides of the assertion to be a match, with existence of the proper target functionality behind that, we can be confident that we have a much stronger coverage than we would've had when using an ordinary Test Coverage tool of some choice. That's when the implementer's resigned on or missed the idea of precise assertions with all parts of the functionality we've been driving in.  
+* Thus, we should always use Test-Driven Development (unless we are too lazy, but then nobody can help you).
 
 ## Thanks
 
