@@ -51,20 +51,18 @@ In computer science, test coverage is a measure (in percent) of the degree to wh
 
 Whenever we consider a hypothesis, the error cases are categorized with the following terms:
 
-False Positive [Type 1 Error]: We expected something to be positive but in reality that is negative.
-False Negative [Type 2 Error]: We expected something to be negative but in reality that is positive.
+- **False Positive** _[Type 1 Error]_: We expected something to be _positive_ but in reality that is _negative_.
+- **False Negative** _[Type 2 Error]_: We expected something to be _negative_ but in reality that is _positive_.
 
-False Negatives (or Type 2 Errors) are considered to be far riskier than False Positives.
-
-For Example, If you receive a piece of news that there is **not** going to be an earthquake but in reality, it did happen (False Negative) is far riskier than If you receive a piece of news that there is going to be an earthquake but it didn't happen (False Positive).
+Note: False Negatives (or Type 2 Errors) are considered to be far riskier than False Positives. For Example, If you receive a piece of news that there is **not** going to be an earthquake but in reality, it did happen (False Negative) is far riskier than If you receive a piece of news that there is going to be an earthquake but it didn't happen (False Positive).
 
 #### Relation with Test Coverage
 
-- Using Test Coverage as the main metric increases the chances of False Negatives.
+- Using Test Coverage as the main metric increases the chances of False Negatives (riskier Type 2 Errors).
 - When the Test Coverage increases we start to believe that more lines covered means that there are fewer bugs, which keeps us far away from the truth as we deprioritized the logic testing over code coverage.
-- Thus, making us more prone to False Negatives (riskier Type 2 Errors), as we start to believe that more lines covered means fewer bugs.
-- The only benefit Test Coverage serves is if let's say we have 20% code coverage, it can guide us to write more tests, but if we have 80% Test Coverage that does not necessarily mean that we've diminished most of the bugs.
-- Thus, Test Driven Development is something that we should trust instead of prioritizing code coverage.
+- Thus, as we start to believe that more lines covered means fewer bugs it makes us more prone to False Negatives.
+- The only benefit that Test Coverage serves is, for example, we have 20% code coverage, it can guide us to write more tests, but if we have 80% Test Coverage that does not necessarily mean that we've diminished most of the bugs.
+- Thus, we should always use Test-Driven Development.
 
 ## Thanks
 
